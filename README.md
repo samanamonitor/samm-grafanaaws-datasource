@@ -2,7 +2,7 @@
 
 This plugin communicates with AWS API to collect information about "Workspaces" and "Appstream" services.
 
-![Add Data Source](https://raw.githubusercontent.com/samanamonitor/samm-grafanaaws-datasource/master/src/img/config.png)
+![Add Data Source](https://raw.githubusercontent.com/samanamonitor/samm-grafanaaws-datasource/main/src/img/config.png)
 
 ## Configuration
 
