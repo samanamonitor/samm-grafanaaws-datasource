@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "datasource",
+  "name": "Sammaws",
+  "id": "samm-grafanaaws-datasource",
+  "metrics": true,
+  "backend": true,
+  "executable": "gpx_sammaws",
+  "info": {
+    "description": "",
+    "author": {
+      "name": "Samana group"
+    },
+    "keywords": ["datasource"],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [],
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=12.1.1",
+    "plugins": []
+  },
+  "includes": [
+    {
+      "name": "Workspaces Management",
+      "path": "dashboards/workspaces.json",
+      "type": "dashboard"
+    },
+    {
+      "name": "Appstream Management",
+      "path": "dashboards/appstream.json",
+      "type": "dashboard"
+    }
+  ]
+}

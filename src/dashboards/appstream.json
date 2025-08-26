@@ -1,0 +1,226 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "samm-grafanaaws-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "showInfo": true
+      },
+      "pluginVersion": "1.0.0",
+      "repeat": "User",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "Limit": -1,
+          "datasource": {
+            "type": "samanagroup-sammaws-datasource",
+            "uid": "${datasource}"
+          },
+          "fieldList": [
+            "Id",
+            "ConnectionState",
+            "UserId"
+          ],
+          "filterConditions": [
+            {
+              "outProperty": "FleetName",
+              "property": "FleetName",
+              "value": "$Fleet"
+            },
+            {
+              "outProperty": "StackName",
+              "property": "StackName",
+              "value": "$Stack"
+            },
+            {
+              "outProperty": "UserId",
+              "property": "UserId",
+              "value": "$User"
+            },
+            {
+              "outProperty": "AuthenticationType",
+              "property": "AuthenticationType",
+              "value": "SAML"
+            }
+          ],
+          "filter_field": "none",
+          "refId": "A",
+          "service": "appstream",
+          "service_query": "DescribeSessions"
+        }
+      ],
+      "title": "Session Manager",
+      "type": "samanagroup-sammaws-panel"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "name": "datasource",
+        "options": [],
+        "query": "samm-grafanaaws-datasource",
+        "refresh": 1,
+        "regex": "",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "samm-grafanaaws-datasource",
+          "uid": "${datasource}"
+        },
+        "definition": "",
+        "name": "Fleet",
+        "options": [],
+        "query": {
+          "Limit": -1,
+          "fieldList": [
+            "Name",
+            "Name"
+          ],
+          "filterConditions": [],
+          "filter_field": "none",
+          "query": "",
+          "refId": "",
+          "service": "appstream",
+          "service_query": "DescribeFleets"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "samm-grafanaaws-datasource",
+          "uid": "${datasource}"
+        },
+        "definition": "appstream.ListAssociatedStacks(fieldList[0]=undefined,fieldList[1]=undefined)",
+        "name": "Stack",
+        "options": [],
+        "query": {
+          "Limit": -1,
+          "fieldList": [
+            "Names",
+            "Names"
+          ],
+          "filterConditions": [
+            {
+              "outProperty": "FleetName",
+              "property": "FleetName",
+              "value": "$Fleet"
+            }
+          ],
+          "filter_field": "none",
+          "query": "appstream.ListAssociatedStacks(fieldList[0]=undefined,fieldList[1]=undefined)",
+          "refId": "",
+          "service": "appstream",
+          "service_query": "ListAssociatedStacks"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "samm-grafanaaws-datasource",
+          "uid": "${datasource}"
+        },
+        "definition": "appstream.DescribeSessions(fieldList[0]=undefined,fieldList[1]=undefined)",
+        "includeAll": true,
+        "multi": true,
+        "name": "User",
+        "options": [],
+        "query": {
+          "Limit": -1,
+          "fieldList": [
+            "UserId",
+            "UserId"
+          ],
+          "filterConditions": [
+            {
+              "outProperty": "FleetName",
+              "property": "FleetName",
+              "value": "$Fleet"
+            },
+            {
+              "outProperty": "StackName",
+              "property": "StackName",
+              "value": "$Stack"
+            }
+          ],
+          "filter_field": "none",
+          "query": "appstream.DescribeSessions(fieldList[0]=undefined,fieldList[1]=undefined)",
+          "refId": "",
+          "service": "appstream",
+          "service_query": "DescribeSessions"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Appstream Sessions",
+  "uid": "e9b77266-2e7a-4298-9cc7-5aff6a78bff3",
+  "version": 2
+}

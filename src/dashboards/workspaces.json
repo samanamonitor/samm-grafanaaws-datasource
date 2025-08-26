@@ -1,0 +1,138 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 2,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "samm-grafanaaws-datasource",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "seriesCountSize": "sm",
+          "showInfo": true,
+          "showSeriesCount": false,
+          "text": "Default value of text input option",
+          "workspaceId": "${workspaceId}"
+        },
+        "pluginVersion": "1.0.0",
+        "repeat": "workspaceId",
+        "repeatDirection": "h",
+        "targets": [
+          {
+            "Limit": -1,
+            "datasource": {
+              "type": "samm-grafanaaws-datasource",
+              "uid": "${datasource}"
+            },
+            "fieldList": [
+              "WorkspaceId",
+              "State",
+              "UserName"
+            ],
+            "filterConditions": [
+              {
+                "outProperty": "WorkspaceId",
+                "property": "WorkspaceId",
+                "value": "$workspaceId"
+              }
+            ],
+            "filter_field": "none",
+            "refId": "A",
+            "service": "workspaces",
+            "service_query": "DescribeWorkspaces"
+          }
+        ],
+        "title": "Workspace Manager",
+        "type": "samanagroup-sammaws-panel"
+      }
+    ],
+    "preload": false,
+    "schemaVersion": 41,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "name": "datasource",
+          "options": [],
+          "query": "samm-grafanaaws-datasource",
+          "refresh": 1,
+          "regex": "",
+          "type": "datasource"
+        },
+        {
+          "current": {
+            "text": [],
+            "value": []
+          },
+          "datasource": {
+            "type": "samm-grafanaaws-datasource",
+            "uid": "${datasource}"
+          },
+          "definition": "workspaces.DescribeWorkspaces(fieldList[0]=undefined,fieldList[1]=undefined)",
+          "label": "User",
+          "multi": true,
+          "name": "workspaceId",
+          "options": [],
+          "query": {
+            "Limit": -1,
+            "fieldList": [
+              "UserName",
+              "WorkspaceId"
+            ],
+            "filterConditions": [],
+            "filter_field": "none",
+            "query": "workspaces.DescribeWorkspaces(fieldList[0]=undefined,fieldList[1]=undefined)",
+            "refId": "",
+            "service": "workspaces",
+            "service_query": "DescribeWorkspaces"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "Workspaces Management",
+    "uid": "b320dac7-4965-4fbf-b0b4-76e9cadae6bf",
+    "version": 25
+  }
